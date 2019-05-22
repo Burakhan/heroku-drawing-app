@@ -1,0 +1,46 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Drawing Canvas Example
+    script(type='text/javascript', src='https://code.jquery.com/jquery-3.4.1.min.js')
+    script(type='text/javascript', src='/socket.io/socket.io.js')
+    link(type='text/css', media='screen', rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.8.2/css/all.css')
+    link(type='text/css', media='screen', rel='stylesheet', href='/style.css')
+    script.
+      var drawRoom = 'Room!{drawRoom}';
+
+  body
+    canvas#drawing(width='600', height='600') Oh crap... your browser doesn't support canvas!
+    div.tool
+      button.btn.btn-outline-dark(onclick="Canvas.setTool('line')")
+        i.fas.fa-pencil-alt.fa-2x
+      //button.btn.btn-outline-dark(onclick="canvas.setTool('arrow')")
+      //  i.fas.fa-arrow-down.fa-2x
+      button.btn.btn-outline-dark(onclick="Canvas.setTool('eraser')")
+        i.fas.fa-eraser.fa-2x
+      //button.btn.btn-outline-dark(onclick="canvas.setTool('grab')")
+      //  i.fas.fa-hand-paper.fa-2x
+      button.btn.btn-outline-dark(onclick="Canvas.setTool('pencil').setColor('yellow')")
+        i.fas.fa-palette.fa-2x
+      button.btn.btn-outline-dark(onclick="Canvas.setTool('pencil').setColor('hsl(240,100%,50%)')")
+        i.fas.fa-palette.fa-2x
+      button.btn.btn-outline-dark(onclick="Canvas.setTool('pencil').setColor('#00bb00')")
+        i.fas.fa-palette.fa-2x
+      button.btn.btn-outline-dark(onclick="Canvas.setBigger()")
+        i.fas.fa-plus.fa-2x
+      button.btn.btn-outline-dark(onclick="Canvas.setSmaller()")
+        i.fas.fa-minus.fa-2x
+      //button.btn.btn-outline-dark(onclick="Canvas.clear()")
+      //  i.fas.fa-trash-alt.fa-2x
+      // button.btn.btn-outline-dark(onclick="canvas.undo()")
+      //  i.fas.fa-undo.fa-2x
+      // button.btn.btn-outline-dark(onclick="canvas.redo()")
+      //  i.fas.fa-redo.fa-2x
+      button.btn.btn-outline-dark(onclick="Canvas.setZoomIn(event)")
+        i.fas.fa-search-plus.fa-2x
+      button.btn.btn-outline-dark(onclick="Canvas.setZoomOut(event)")
+        i.fas.fa-search-minus.fa-2x
+
+    script(type='text/javascript', src='/scripts.js')
